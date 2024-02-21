@@ -19,21 +19,7 @@ public class ClienteController {
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> buscarClientePorId(@PathVariable Long id) {
-        try {
-            Cliente cliente = clienteService.buscarClientePorId(id);
-            if (cliente != null) {
-                return ResponseEntity.ok(cliente);
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El cliente con el ID " + id + " no existe.");
-            }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al buscar el cliente: " + e.getMessage());
-        }
-    }
-
+    
     @GetMapping
     public ResponseEntity<List<Cliente>> buscarTodosLosClientes() {
         try {
@@ -48,6 +34,21 @@ public class ClienteController {
         }
     }
 
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarClientePorId(@PathVariable Long id) {
+        try {
+            Cliente cliente = clienteService.buscarClientePorId(id);
+            if (cliente != null) {
+                return ResponseEntity.ok(cliente);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El cliente con el ID " + id + " no existe");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al buscar el cliente: " + e.getMessage());
+        }
+    }
+    
     @PostMapping("/crear")
     public ResponseEntity<String> crearCliente(@Valid @RequestBody Cliente cliente) {
         try {

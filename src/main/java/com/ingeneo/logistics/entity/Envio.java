@@ -32,7 +32,10 @@ public class Envio implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
+    
+     @Column(name = "tipo_envio")
+    private int tipoEnvio;
+    
     public Long getIdEnvio() {
         return idEnvio;
     }
@@ -97,5 +100,13 @@ public class Envio implements Serializable {
         this.cliente = cliente;
     }
 
+    public int getTipoEnvio() {
+        return tipoEnvio;
+    }
+
+    public void setTipoEnvio(int tipoEnvio) {
+        this.tipoEnvio = tipoEnvio;
+    }
+    
     
 }
