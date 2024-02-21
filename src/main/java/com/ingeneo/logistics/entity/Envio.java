@@ -12,6 +12,9 @@ public class Envio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEnvio;
+    
+    @Column(name = "producto_id")
+    private Long productoId;
 
     private String numeroGuia;
     private int cantidadProducto;
@@ -28,10 +31,9 @@ public class Envio implements Serializable {
 
     @Column(name = "vehiculo_id")
     private Long vehiculoId;
-
-    @ManyToOne
+    
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private Long clienteId;
     
      @Column(name = "tipo_envio")
     private int tipoEnvio;
@@ -92,12 +94,12 @@ public class Envio implements Serializable {
         this.vehiculoId = vehiculoId;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Long getIdCliente() {
+        return clienteId;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setIdCliente(Long cliente) {
+        this.clienteId = cliente;
     }
 
     public int getTipoEnvio() {
@@ -106,6 +108,14 @@ public class Envio implements Serializable {
 
     public void setTipoEnvio(int tipoEnvio) {
         this.tipoEnvio = tipoEnvio;
+    }
+
+    public Long getProductoId() {
+        return productoId;
+    }
+
+    public void setProductoId(Long productoId) {
+        this.productoId = productoId;
     }
     
     
