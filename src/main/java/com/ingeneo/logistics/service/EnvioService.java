@@ -23,6 +23,11 @@ public class EnvioService implements EnvioServiceInterface {
     public List<Envio> buscarTodosLosEnvios() {
         return envioRepository.findAll();
     }
+    
+    @Override
+    public List<Envio> buscarTodosLosEnviosConInformacionRelacionada() {
+        return envioRepository.findAllWithRelatedInfo();
+    }
 
     @Override
     public Envio buscarEnvioPorId(Long id) {
