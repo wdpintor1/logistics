@@ -35,7 +35,6 @@ public class ProductoService implements ProductoServiceInterface {
                     .orElseThrow(() -> new RuntimeException("No se encontró el producto con ID: " + producto.getIdProducto()));
             // Actualizar los campos del producto existente con los valores del producto pasado
             productoExistente.setNombre(producto.getNombre());
-            productoExistente.setTipoId(producto.getTipoId());
             productoExistente.setCantidadStock(producto.getCantidadStock());
 
             // Guardar el producto actualizado en la base de datos
