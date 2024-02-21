@@ -13,8 +13,9 @@ public class Envio implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEnvio;
     
-    @Column(name = "producto_id")
-    private Long productoId;
+    @ManyToOne
+    @JoinColumn(name = "producto_id") // Asegúrate de que el nombre de la columna sea el correcto
+    private Producto producto;
 
     private String numeroGuia;
     private int cantidadProducto;
@@ -110,12 +111,12 @@ public class Envio implements Serializable {
         this.tipoEnvio = tipoEnvio;
     }
 
-    public Long getProductoId() {
-        return productoId;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProductoId(Long productoId) {
-        this.productoId = productoId;
+    public void setProductoId(Producto producto) {
+        this.producto = producto;
     }
     
     
